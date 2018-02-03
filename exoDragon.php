@@ -7,11 +7,12 @@
     <title>Dragon Battle</title>
 </head>
 <body>
-<h1 style="font-size:40px; color: darkgreen;">Dragon Battle</h1>
+<header style="font-size:xx-large; color: darkgreen;">Dragon Battle</header>
+<h1>The dragons:</h1>
     <?php
         include "dragon.php";
 
-        $dragonList = [
+        $dragonList = [ 
             $prout = new Dragon('Prout', 'feu'),
             $morr = new Dragon('Morr', 'vent'),
             $derk = new Dragon('Derk', 'gravité'),
@@ -19,18 +20,6 @@
             $badalama = new Dragon ('Badalama', 'tonnerre')
         ];
 
-        
-       function howManyAlive($arr) {  //returns total number of living dragons
-           $totalNumber = 0;
-           foreach ($arr as $dragon) {
-               if ( $dragon->isAlive() ) {
-                    $totalNumber ++;
-               }
-           }
-           return $totalNumber;  
-       }
-
-        
         function pickEnemy($attacker,$possibleTargets) { //chooses enemy from possible targets
             $target = $possibleTargets[array_rand($possibleTargets)]; //random pick from array
             if ($target == $attacker) {
@@ -39,10 +28,15 @@
             return $target;
         }
 
-    
         foreach ($dragonList as $dragon) {
             $dragon->sayHi();
         }
+        ?>
+        
+<h1>Fight!</h1>
+        <?php
+    
+        
     
         while (count($dragonList) > 1) {
             foreach ($dragonList as $dragon) {
@@ -56,17 +50,12 @@
                 }
             echo "These are the dragons left alive : <pre>";
             echo print_r($dragonList);
-            echo "</pre>";
-            
+            echo "</pre>";            
         }
 
-       
         foreach ($dragonList as $dragon) {
                 echo " The battle is finished, the winner is " . $dragon->nom;
-            }
-           
-            
-  
+            }  
     ?>
 </body>
 </html>

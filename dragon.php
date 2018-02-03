@@ -2,9 +2,10 @@
     
     class Dragon
     {
+        
+        public $nom;    
+        
         private $pouvoir;
-
-        public $nom;
 
         public $vie = 5;
 
@@ -16,7 +17,8 @@
         public function fight($enemy) 
         {
             $puissance = rand(1,12);
-            echo "<br> " . $this->nom . " : <br>Je fais une attaque de " . $this->pouvoir . " de puissance " . $puissance . " contre " . $enemy->nom . ". <br>";
+            echo $this->nom . " : <br>Je fais une attaque de " . $this->pouvoir . " de puissance " . $puissance . " contre " . $enemy->nom . ". <br>";
+            echo "ZZZZHHHHHRRRGGGHHHH!!!<br>";
             $enemy->recevoirDegats($puissance);
         }
 
@@ -24,9 +26,9 @@
         {
             $this->vie -= $degats;
             if ($this->isAlive()) {
-                echo "<br>Life energy left in " . $this->nom . " : " . $this->vie ;
+                echo "Points de vie de " . $this->nom . " : " . $this->vie . "<br><br>";
             } else {
-                echo "<br>Dead dragon! Dead dragon! RIP: " . $this->nom . "<br><br>";
+                echo "Dead dragon! Dead dragon! RIP: " . $this->nom . "<br><br>";
             }
         }
 
