@@ -14,6 +14,13 @@
             echo "Coucou je m'apelle " . $this->nom . "<br>";
         }
 
+        public static function sayHiEverybody($arr)
+        {
+            foreach ($arr as $e) {
+                $e->sayHi();
+            }
+        }
+
         public function fight($enemy) 
         {
             $puissance = rand(1,12);
@@ -34,9 +41,9 @@
 
         public function printFeatures()
         {
-            echo "<br>Name: " . $this->nom;
-            echo "<br>Power: " . $this->pouvoir;
-            echo "<br>Energy: " . $this->vie;
+            echo "Name: " . $this->nom . "<br>";
+            echo "Power: " . $this->pouvoir . "<br>";
+            echo "Life: " . $this->vie . "<br><br>";
         }
 
         public function isAlive()
@@ -50,6 +57,22 @@
             $this->pouvoir = $pouvoir;
         }
 
+        public static function pickEnemy($attacker,$possibleTargets)
+        { //chooses enemy from an array of possible targets
+            $target = $possibleTargets[array_rand($possibleTargets)]; //random pick from array
+            if ($target == $attacker) { //if invalid target, repeat
+                $target = Dragon::pickEnemy($attacker,$possibleTargets); 
+            }
+            return $target;
+        }
+
+        public static function printAllDragonsFeats($arr)
+        {
+            echo "<h3>These are the dragons left alive now: </h3><br>";
+            foreach ($arr as $e) {
+                $e->printFeatures();
+            }
+        }
 
     }
 ?>

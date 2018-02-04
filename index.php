@@ -20,37 +20,24 @@
             $badalama = new Dragon ('Badalama', 'tonnerre')
         ];
 
-        function pickEnemy($attacker,$possibleTargets) { //chooses enemy from possible targets
-            $target = $possibleTargets[array_rand($possibleTargets)]; //random pick from array
-            if ($target == $attacker) {
-                $target = pickEnemy($attacker,$possibleTargets); //if invalid target, repeat
-            }
-            return $target;
-        }
+        shuffle($dragonList);
 
-        foreach ($dragonList as $dragon) {
-            $dragon->sayHi();
-        }
-        ?>
+        Dragon::sayHiEverybody($dragonList);
+
+        echo "<h1>Fight!</h1>";
         
-<h1>Fight!</h1>
-        <?php
-    
-        
-    
         while (count($dragonList) > 1) {
             foreach ($dragonList as $dragon) {
                 if ( $dragon->isAlive()) {
-                    $target = pickEnemy($dragon,$dragonList);
+                    $target = Dragon::pickEnemy($dragon,$dragonList);
                     $dragon->fight($target);
                 }
                 $dragonList = array_filter($dragonList, function($e) {
                     return $e->isAlive();
                 });
                 }
-            echo "These are the dragons left alive : <pre>";
-            echo print_r($dragonList);
-            echo "</pre>";            
+            Dragon::printAllDragonsFeats($dragonList);
+            shuffle($dragonList); 
         }
 
         foreach ($dragonList as $dragon) {
