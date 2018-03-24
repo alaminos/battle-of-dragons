@@ -2,10 +2,18 @@
     
     class Dragon
     {
+        public function __construct($nom, $pouvoir, $couleur)
+        {
+            $this->nom = $nom;
+            $this->pouvoir = $pouvoir;
+            $this->couleur = $couleur;
+        }
         
         public $nom;    
         
-        private $pouvoir;
+        public $pouvoir;
+
+        public $couleur;
 
         public $vie = 5;
 
@@ -51,11 +59,7 @@
             return $this->vie > 0;
         }
 
-        public function __construct($nom, $pouvoir)
-        {
-            $this->nom = $nom;
-            $this->pouvoir = $pouvoir;
-        }
+        
 
         public static function pickEnemy($attacker,$possibleTargets)
         { //chooses enemy from an array of possible targets

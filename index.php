@@ -1,3 +1,13 @@
+<?php
+    include 'class_dragon.php';
+    session_start();
+
+    if (!isset($_SESSION['dragons'])) {
+        header('Location: dragon_factory.php' );
+        die();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,16 +20,8 @@
 <header style="font-size:xx-large; color: darkgreen;">Dragon Battle</header>
 <h1>The dragons:</h1>
     <?php
-        include "dragon.php";
-
-        $dragonList = [ 
-            $prout = new Dragon('Prout', 'feu'),
-            $morr = new Dragon('Morr', 'vent'),
-            $derk = new Dragon('Derk', 'gravité'),
-            $gurkep = new Dragon('Gurkep', 'glace'),
-            $badalama = new Dragon ('Badalama', 'tonnerre')
-        ];
-
+        
+        $dragonList = $_SESSION['dragons'];
         shuffle($dragonList);
 
         Dragon::sayHiEverybody($dragonList);
@@ -42,7 +44,12 @@
 
         foreach ($dragonList as $dragon) {
                 echo " The battle is finished, the winner is " . $dragon->nom;
-            }  
+            }
+
+        session_destroy();
+        
     ?>
+
+    <div>Create new dragons <a href="dragon_factory.php">here</a>. </div>
 </body>
 </html>
