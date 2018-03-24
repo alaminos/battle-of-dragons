@@ -11,7 +11,6 @@ Just practicing OOP programming with PHP.
 
 # corrections and stuff to add
 
-+ establish const array with values: colors and powers
-+ define function that picks a random value from the constant at the time of creation of object
-+ in setRandomColor() we we'll find: $randomIndex = rand(patatitatata); $this->couleur = self::COLORS[$randomIndex]; where COLORS is the const
++ ~~establish const array with values: colors and powers~~
++ ~~define function that picks a random value from the constant at the time of creation of object~~
 + Might be interesting: add a getRandomDamage() function in the class definition, pick a random value but depends partly on the size of the dragon. Plus grand -> plus puissant.
